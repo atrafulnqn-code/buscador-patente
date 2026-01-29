@@ -6,11 +6,12 @@ st.set_page_config(page_title="Buscador de Patentes", layout="wide")
 
 st.title("🚗 Buscador de Patentes (MTM/FMM)")
 
-# Cargar datos (con caché para que sea rápido)
-@st.cache_data
+# Cargar datos (caché deshabilitado temporalmente para forzar actualización)
+# @st.cache_data  # Deshabilitado para forzar recarga del CSV corregido
 def load_data():
     try:
         # Leemos el CSV con datos corregidos (extraídos por posición X)
+        # Versión: 2025-01-29 - Corregido desfase de años
         df = pd.read_csv("datos_patentes.csv", dtype=str)
 
         # Reemplazar valores vacíos con guiones
@@ -36,7 +37,7 @@ if df is not None:
         st.write(f"Resultados encontrados: **{len(resultados)}**")
         
         # Mostrar tabla interactiva
-        st.dataframe(resultados, use_container_width=True)
+        st.dataframe(resultados, width='stretch')
     else:
         st.info("👆 Escribe un código arriba para empezar a buscar.")
         # Mostrar una vista previa pequeña
