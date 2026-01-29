@@ -19,8 +19,8 @@ def extract_all_data(pdf_path, output_csv):
         ("Tipo", 85, 96),
         ("Desc. marca", 96, 130),
         ("Desc. Modelo", 130, 147),
-        ("Desc. Tipo", 147, 231),
-        ("0Km", 231, 242.5),      # Hasta punto medio con 2025
+        ("Desc. Tipo", 147, 220),  # Ajustado para no capturar valores de 0Km
+        ("0Km", 220, 242.5),       # Ampliado para capturar valores desde ~227
         ("2025", 242.5, 264),     # Desde punto medio con 0Km hasta punto medio con 2024
         ("2024", 264, 285.9),     # Desde punto medio con 2025 hasta punto medio con 2023
         ("2023", 285.9, 307.8),
