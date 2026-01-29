@@ -10,23 +10,12 @@ st.title("🚗 Buscador de Patentes (MTM/FMM)")
 @st.cache_data
 def load_data():
     try:
-        # Leemos el CSV (versión limpia)
-        df = pd.read_csv("datos_patentes_limpio.csv", dtype=str)
-        
-        # --- LIMPIEZA DE DATOS ---
+        # Leemos el CSV con datos corregidos (extraídos por posición X)
+        df = pd.read_csv("datos_patentes.csv", dtype=str)
+
+        # Reemplazar valores vacíos con guiones
         df.fillna('-', inplace=True)
-        
-        # Unir columnas fragmentadas si existen
-        cols = df.columns
-        if 'Desc. Tipo' in cols and 'Col_8' in cols and 'Col_9' in cols:
-            df['Desc. Tipo'] = df.apply(
-                lambda row: (str(row['Desc. Tipo']) + str(row['Col_8']) + str(row['Col_9']))
-                .replace('-', '')
-                .replace('nan', ''), 
-                axis=1
-            )
-            df.drop(columns=['Col_8', 'Col_9'], inplace=True, errors='ignore')
-            
+
         return df
     except FileNotFoundError:
         return None

@@ -1,0 +1,31 @@
+# Archivos de datos grandes
+*.pdf
+datos_patentes_limpio.csv
+*_backup.csv
+
+# IMPORTANTE: datos_patentes.csv se sube porque Streamlit lo necesita
+# !datos_patentes.csv
+
+# IDEs
+.idea/
+.vscode/
+*.pyc
+__pycache__/
+
+# Sistema
+nul
+.DS_Store
+Thumbs.db
+
+# Backups
+*_backup.py
+*_old.py
+
+# Entorno virtual
+venv/
+env/
+.env
+
+# Temporal
+*.tmp
+*.log
